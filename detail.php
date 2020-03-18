@@ -150,7 +150,7 @@ $preference->save();
                                             <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "Cantidad: " . $_POST['unit'] ?>
+                                            <?php echo "Cantidad: " . $_POST['quantity'] ?>
                                         </h3>
                                     </div>
                                     <form action="/procesar-pago" method="POST">
