@@ -1,3 +1,26 @@
+<?php
+// Mercado Pago's SDK
+require __DIR__ . '/vendor/autoload.php';
+
+// Add credentials
+MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398');
+
+// Preference
+$preference = new MercadoPago\Preference();
+
+// Item
+$chosen_item = new MercadoPago\Item();
+$chosen_item->title = $_POST['title'];
+$chosen_item->quantity = $_POST['quantity'];
+$chosen_item->unit_price = $_POST['price'];
+// $item->currency_id = "ARS";
+
+// Add the chosen item to the preference
+$preference->items = array($chosen_item);
+$preference->save();
+
+?>
+
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -130,7 +153,10 @@
                                             <?php echo "Cantidad: " . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <form action="/procesar-pago" method="POST">
+                                        <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<?php echo $preference->id; ?>">
+                                        </script>
+                                    </form>
                                 </div>
                             </div>
                         </div>
