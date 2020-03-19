@@ -10,17 +10,37 @@ $preference = new MercadoPago\Preference();
 
 // Item
 $chosen_item = new MercadoPago\Item();
-$chosen_item->id = "1234";
+$chosen_item->id = '1234';
 $chosen_item->title = $_POST['title'];
-$chosen_item->description = "Dispositivo móvil de Tienda e-commerce.";
+$chosen_item->description = 'Dispositivo móvil de Tienda e-commerce.';
 $chosen_item->quantity = $_POST['quantity'];
 $chosen_item->unit_price = $_POST['price'];
 $chosen_item->picture_url = $_POST['img'];
-$chosen_item->currency_id = "ARS";
+$chosen_item->currency_id = 'ARS';
 
-// Add the chosen item to the preference
+// Payer
+$payer = new MercadoPago\Payer();
+$payer->name = 'Lalo';
+$payer->surname = 'Landa';
+$payer->email = 'test_user_63274575@testuser.com';
+$payer->phone = array(
+    'area_code' => '011',
+    'number' => '2222-3333'
+);
+$payer->identification = array(
+    'type' => 'DNI',
+    'number' => '22.333.444'
+);
+$payer->address = array(
+    'zip_code' => '1111',
+    'street_name' => 'Falsa',
+    'street_number' => 123
+);
+
+// Add the chosen item and payer to the preference
 $preference->items = array($chosen_item);
-$preference->external_reference = "ABCD1234";
+$preference->external_reference = 'ABCD1234';
+$preference->payer = $payer;
 $preference->save();
 ?>
 
