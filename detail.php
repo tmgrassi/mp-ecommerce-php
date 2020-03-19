@@ -1,14 +1,9 @@
 <?php
-// Mercado Pago's SDK
 require __DIR__ . '/vendor/autoload.php';
 
-// Add credentials
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398');
 
-// Preference
-$preference = new MercadoPago\Preference();
-
-// Item
+// Item setup
 $chosen_item = new MercadoPago\Item();
 $chosen_item->id = '1234';
 $chosen_item->title = $_POST['title'];
@@ -18,7 +13,7 @@ $chosen_item->unit_price = $_POST['price'];
 $chosen_item->picture_url = $_POST['img'];
 $chosen_item->currency_id = 'ARS';
 
-// Payer
+// Payer setup
 $payer = new MercadoPago\Payer();
 $payer->name = 'Lalo';
 $payer->surname = 'Landa';
@@ -37,7 +32,7 @@ $payer->address = array(
     'zip_code' => '1111'
 );
 
-// Payment methods
+// Payment methods setup
 $payment_methods = new MercadoPago\PaymentMethod();
 $payment_methods->excluded_payment_methods = array(
     array('id' => 'amex')
@@ -48,11 +43,12 @@ $payment_methods->excluded_payment_types = array(
 $payment_methods->installments = 6;
 
 
-// Add the chosen item and payer to the preference
+// Preference setup
+$preference = new MercadoPago\Preference();
 $preference->items = array($chosen_item);
-$preference->external_reference = 'ABCD1234';
 $preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
+$preference->external_reference = 'ABCD1234';
 $preference->save();
 ?>
 
