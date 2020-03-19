@@ -54,9 +54,9 @@ $preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->external_reference = 'ABCD1234';
 $preference->back_urls = array(
-    'success' => '/success',
-    'failure' => '/failure',
-    'pending' => '/pending'
+    'success' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
+    'failure' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
+    'pending' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/'
 );
 $preference->auto_return = 'approved';
 $preference->save();
