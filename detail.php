@@ -53,6 +53,7 @@ $preference->items = array($chosen_item);
 $preference->payer = $payer;
 $preference->payment_methods = $payment_methods;
 $preference->external_reference = 'ABCD1234';
+$preference->notification_url = 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/ipn.php';
 $preference->back_urls = array(
     'success' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
     'failure' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
