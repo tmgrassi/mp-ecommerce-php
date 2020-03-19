@@ -197,7 +197,7 @@ $preference->save();
                                             <?php echo "Cantidad: " . $_POST['quantity'] ?>
                                         </h3>
                                     </div>
-                                    <form method="POST">
+                                    <form method="POST" action='/success.php'>
                                         <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                         data-preference-id="<?php echo $preference->id; ?>"
                                         data-button-label="Pagar la compra"
