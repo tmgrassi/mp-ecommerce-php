@@ -10,15 +10,18 @@ $preference = new MercadoPago\Preference();
 
 // Item
 $chosen_item = new MercadoPago\Item();
+$chosen_item->id = "1234";
 $chosen_item->title = $_POST['title'];
+$chosen_item->description = "Dispositivo móvil de Tienda e-commerce.";
 $chosen_item->quantity = $_POST['quantity'];
 $chosen_item->unit_price = $_POST['price'];
-// $item->currency_id = "ARS";
+$chosen_item->picture_url = $_POST['img'];
+$chosen_item->currency_id = "ARS";
 
 // Add the chosen item to the preference
 $preference->items = array($chosen_item);
+$preference->external_reference = "ABCD1234";
 $preference->save();
-
 ?>
 
 <!DOCTYPE html>
