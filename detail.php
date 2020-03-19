@@ -1,7 +1,9 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-090914-5c508e1b02a34fcce879a999574cf5c9-469485398');
+
 
 // Item setup
 $chosen_item = new MercadoPago\Item();
@@ -12,6 +14,7 @@ $chosen_item->quantity = $_POST['quantity'];
 $chosen_item->unit_price = $_POST['price'];
 $chosen_item->picture_url = $_POST['img'];
 $chosen_item->currency_id = 'ARS';
+
 
 // Payer setup
 $payer = new MercadoPago\Payer();
@@ -31,6 +34,7 @@ $payer->address = array(
     'street_number' => 123,
     'zip_code' => '1111'
 );
+
 
 // Payment methods setup
 $payment_methods = new MercadoPago\PaymentMethod();
@@ -54,9 +58,12 @@ $preference->back_urls = array(
     'failure' => '/failure',
     'pending' => '/pending'
 );
-$preference->auto_return = 'all';
+$preference->auto_return = 'approved';
 $preference->save();
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
