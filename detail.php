@@ -18,6 +18,7 @@ $chosen_item->currency_id = 'ARS';
 
 // Payer setup
 $payer = new MercadoPago\Payer();
+$payer->id = 471923173;
 $payer->name = 'Lalo';
 $payer->surname = 'Landa';
 $payer->email = 'test_user_63274575@testuser.com';
@@ -55,9 +56,9 @@ $preference->payment_methods = $payment_methods;
 $preference->external_reference = 'ABCD1234';
 $preference->notification_url = 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/ipn.php';
 $preference->back_urls = array(
-    'success' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
-    'failure' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/',
-    'pending' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/'
+    'success' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/success.php',
+    'failure' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/failure.php',
+    'pending' => 'https://tmgrassi-mp-ecommerce-php.herokuapp.com/pending.php'
 );
 $preference->auto_return = 'approved';
 $preference->save();
@@ -198,7 +199,7 @@ $preference->save();
                                             <?php echo "Cantidad: " . $_POST['quantity'] ?>
                                         </h3>
                                     </div>
-                                    <form method="POST" action='/success.php'>
+                                    <form action='/success.php' method="POST">
                                         <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                         data-preference-id="<?php echo $preference->id; ?>"
                                         data-button-label="Pagar la compra"

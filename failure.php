@@ -1,0 +1,1 @@
+<?php echo '<h1>No se pudo procesar el pago.</h1>';?>
