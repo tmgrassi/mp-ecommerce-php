@@ -25,22 +25,34 @@ $payer->surname = 'Landa';
 $payer->email = 'test_user_63274575@testuser.com';
 $payer->phone = array(
     'area_code' => '011',
-    'number' => '2222-3333'
+    'number' => '22223333'
 );
 $payer->identification = array(
     'type' => 'DNI',
-    'number' => '22.333.444'
+    'number' => '22333444'
 );
 $payer->address = array(
-    'zip_code' => '1111',
     'street_name' => 'Falsa',
-    'street_number' => 123
+    'street_number' => 123,
+    'zip_code' => '1111'
 );
+
+// Payment methods
+$payment_methods = new MercadoPago\PaymentMethod();
+$payment_methods->excluded_payment_methods = array(
+    array('id' => 'amex')
+);
+$payment_methods->excluded_payment_types = array(
+    array('id' => 'atm')
+);
+$payment_methods->installments = 6;
+
 
 // Add the chosen item and payer to the preference
 $preference->items = array($chosen_item);
 $preference->external_reference = 'ABCD1234';
 $preference->payer = $payer;
+$preference->payment_methods = $payment_methods;
 $preference->save();
 ?>
 
